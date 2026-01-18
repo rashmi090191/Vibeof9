@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Website - Prayank</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <body>
+    <header>
+        <h1>Rashmi</h1>
+        <p>Your Guide to Healing & Self-Discovery</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>Welcome to my sacred space of healing and transformation. I'm Rashmi, a spiritual guide dedicated to helping you discover your true path through ancient wisdom and modern insights. With expertise in numerology, tarot reading, and career counselling, I offer compassionate guidance tailored to your unique journey.</p>
+                <p style="margin-top: 1rem;">Whether you're seeking clarity in your life's purpose, answers to pressing questions, or professional direction, I'm here to illuminate your path forward.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>My Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🔢</div>
+                    <h3>Numerology</h3>
+                    <p>Unlock the mystical significance of numbers in your life. Discover your life path, soul purpose, and destiny through the ancient science of numerology. Gain insights into your personality, relationships, and future opportunities.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🃏</div>
+                    <h3>Tarot Reading</h3>
+                    <p>Receive guidance and clarity through the wisdom of tarot cards. Whether you seek answers about love, career, or personal growth, the cards reveal the hidden truths and possibilities that await you on your journey.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💼</div>
+                    <h3>Career Counselling</h3>
+                    <p>Navigate your professional path with confidence and purpose. Through a blend of intuitive guidance and practical strategies, I help you align your career with your authentic self and achieve your professional aspirations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Book a Session</h2>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interested In</label>
+                    <select id="service" name="service" required>
+                        <option value="">Select a service</option>
+                        <option value="numerology">Numerology</option>
+                        <option value="tarot">Tarot Reading</option>
+                        <option value="career">Career Counselling</option>
+                        <option value="multiple">Multiple Services</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Tell me a bit about what you're seeking guidance on..."></textarea>
+                </div>
+                <button type="submit">Send Message</button>
+                <div id="success-message">Thank you! Your message has been received. I'll get back to you soon.</div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Rashmi - Healing & Guidance Services. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/rashhmiii23/" target="_blank">📷 Instagram</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Form submission handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMsg = document.getElementById('success-message');
+            successMsg.style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 5000);
+        });
+
+        // Add animation to service cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+    
+  </body>
+  
+</html>
